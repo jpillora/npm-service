@@ -1,7 +1,7 @@
 npm-service
 =============
 
-Dependencies in, Tar-gzipped `node_modules` out
+Dependencies in, tar-gzipped `node_modules` out
 
 ### Install
 ```
@@ -9,6 +9,25 @@ npm install npm-service
 ```
 
 ### API
+
+#### HTTP
+
+##### Demo: http://npm-service.herokuapp.com
+
+``` js
+var npm = require('npm-service');
+
+npm.server(3000);
+
+//run with:
+// node example.js
+//then visit:
+// http://localhost:3000/
+//or use:
+// curl http://localhost:3000/ -d '{"colors":"latest"}' | gzip -d | tar xf -
+//   or
+// curl http://localhost:3000/ -d '{"colors":"latest"}' > node_modules.tar.gz
+```
 
 #### Programmatic
 
@@ -40,18 +59,6 @@ npm.install({
 // node example.js | gzip -d | tar xf -
 ```
 
-#### HTTP
-
-``` js
-var npm = require('npm-service');
-
-npm.server(3000);
-
-//run with:
-// curl http://localhost:3000/ -d '{"colors":"latest"}' | gzip -d | tar xf -
-//   or
-// curl http://localhost:3000/ -d '{"colors":"latest"}' > node_modules.tar.gz
-```
 
 ---
 

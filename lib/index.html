@@ -2,31 +2,59 @@
 <html>
   <head>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.12.0/css/semantic.css">
-    <style>[ng-cloak] { display: none}</style>
+    <style>
+      [ng-cloak] { display: none}
+      body { font-family: Helvetica; text-align: center; }
+      .main { width: 500px; display: inline-block; }
+      textarea { width: 100%; height: 300px; border: none; font-family: Courier; font-size: 1.2em; }
+      .error { border: red thin solid }
+      pre { white-space: normal; }
+    </style>
   </head>
   <body ng-app="installer">
-    <a href="https://github.com/jpillora/npm-service" style="position: absolute; z-index: 9999999; top: 0; right: 0; border: 0;" class="faded"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/jpillora/npm-service" style="position: absolute; z-index: 9999999; top: 0; right: 0; border: 0;" class="faded"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
     <div ng-show="loading">
       <h3>Loading...</h3>
     </div>
     <div class="main" ng-cloak>
-      <div class="ui segment">
-        <textarea ng-model="input">{"colors":"latest"}</textarea>
+      
+      <div>
+        <h2 class="ui header">Dependencies</h2>
       </div>
+
+      <div class="ui segment" ng-class="{error:url=='#'}">
+        <textarea ng-model="input"></textarea>
+      </div>
+
       <div class="ui segment">
-        <div class="ui button" ng-click="download()">Download</div>
+        <a ng-href="{{ url }}">
+          <div class="ui button">DOWNLOAD NODE_MODULES.TAR.GZ</div>
+        </a>
+      </div>
+
+      <div class="ui segment" ng-show="curl">
+        <pre ng-bind="curl"></pre>
       </div>
 
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
     <script>
       var App = angular.module("installer",[]);
-      App.run(function($rootScope) {
+      App.run(function($rootScope, $http) {
         var scope = $rootScope;
-        scope.download = function() {
-          console.log('download')
-        };
+        scope.input = '{\n  "colors": "latest"\n}';
+        scope.url = null;
+        scope.$watch('input', function() {
+          try {
+            var formatted = JSON.stringify(JSON.parse(scope.input));
+            scope.url = '/?'+formatted;
+            scope.curl = 'curl '+location.href+' -d \''+formatted+'\' | gzip -d | tar xf -';
+          } catch(err) {
+            scope.url = '#';
+            scope.curl = '';
+          }
+        });
       });
     </script>
   </body>
