@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.12.0/css/semantic.css">
+    <style>[ng-cloak] { display: none}</style>
+  </head>
+  <body ng-app="installer">
+    <div ng-show="loading">
+      <h3>Loading...</h3>
+    </div>
+    <div class="main" ng-cloak>
+      <div class="ui segment">
+        <textarea ng-model="input">{"colors":"latest"}</textarea>
+      </div>
+      <div class="ui segment">
+        <div class="ui button" ng-click="download()">Download</div>
+      </div>
+
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+    <script>
+      var App = angular.module("installer",[]);
+      App.run(function($rootScope) {
+        var scope = $rootScope;
+        scope.download = function() {
+          console.log('download')
+        };
+      });
+    </script>
+  </body>
+</html>

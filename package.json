@@ -1,0 +1,12 @@
+{
+  "name": "npm-service",
+  "version": "0.1.0",
+  "main": "lib/npm-service.js",
+  "dependencies": {
+    "glob": "^4.0.0",
+    "tar-stream": "^0.4.2",
+    "mkdirp": "^0.5.0",
+    "through2": "^0.4.2",
+    "rimraf": "^2.2.8"
+  }
+}
