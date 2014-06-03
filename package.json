@@ -2,6 +2,9 @@
   "name": "npm-service",
   "version": "0.1.0",
   "main": "./lib/npm-service.js",
+  "bin": {
+    "npm-service": "./bin/npm-service"
+  },
   "dependencies": {
     "glob": "^4.0.0",
     "tar-stream": "^0.4.2",

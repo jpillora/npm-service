@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+var path = require('path');
+var pkgpath = path.resolve(process.argv[2] || 'package.json');
+try {
+var pkg = require(pkgpath);
+} catch(err) {
+  console.error('Invalid package.json: "%s"', pkgpath);
+  process.exit(1);
+}
+var npm = require('../');
+npm.install(pkg.dependencies).pipe(process.stdout);

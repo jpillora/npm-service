@@ -59,6 +59,15 @@ npm.install({
 // node example.js | gzip -d | tar xf -
 ```
 
+#### CLI
+
+```
+npm install -g npm-service
+```
+
+```
+npm-service [path/to/package.json] > node_modules.tar.gz
+```
 
 ---
 
