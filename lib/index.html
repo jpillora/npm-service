@@ -20,14 +20,18 @@
     <div class="main" ng-cloak>
       
       <div>
-        <h2 class="ui header">Dependencies</h2>
+        <h1 class="ui header">npm service</h2>
+      </div>
+      
+      <div>
+        <h3 class="ui header">Dependencies</h2>
       </div>
 
       <div class="ui segment" ng-class="{error:url=='#'}">
         <textarea ng-model="input"></textarea>
       </div>
 
-      <div class="ui segment">
+      <div class="ui segment" ng-show="url">
         <a ng-href="{{ url }}">
           <div class="ui button">DOWNLOAD NODE_MODULES.TAR.GZ</div>
         </a>
@@ -51,7 +55,7 @@
             scope.url = '/?'+formatted;
             scope.curl = 'curl '+location.href+' -d \''+formatted+'\' | gzip -d | tar xf -';
           } catch(err) {
-            scope.url = '#';
+            scope.url = '';
             scope.curl = '';
           }
         });
