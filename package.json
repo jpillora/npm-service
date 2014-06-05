@@ -12,5 +12,12 @@
     "through2": "^0.4.2",
     "rimraf": "^2.2.8",
     "lru-cache": "^2.5.0"
+  },
+  "subdomain": "npm-service",
+  "scripts": {
+    "start": "start.sh"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
