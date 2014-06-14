@@ -1,6 +1,6 @@
 {
   "name": "npm-service",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "main": "./lib/npm-service.js",
   "bin": {
     "npm-service": "./bin/npm-service"
@@ -15,7 +15,7 @@
   },
   "subdomain": "npm-service",
   "scripts": {
-    "start": "start.sh"
+    "start": "jitsu/start.js"
   },
   "engines": {
     "node": "0.10.x"

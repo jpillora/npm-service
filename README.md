@@ -12,7 +12,9 @@ npm install npm-service
 
 #### HTTP
 
-##### Demo: http://npm-service.herokuapp.com
+##### Demo: http://npm-service.jitsu.com/
+
+Run locally:
 
 ``` js
 var npm = require('npm-service');
